@@ -1,4 +1,6 @@
 class Tenant < ApplicationRecord
+    has_many :tickets
+    
     #check we have input for all fields, phone and email in particular
     validates :first_name, presence: true
     validates :last_name, presence: true
