@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_114123) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_202259) do
   create_table "tenants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -21,4 +21,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_114123) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "tenant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_tickets_on_tenant_id"
+  end
+
+  add_foreign_key "tickets", "tenants"
 end
