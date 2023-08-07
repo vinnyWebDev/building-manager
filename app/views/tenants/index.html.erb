@@ -1,0 +1,9 @@
+<h1>Tenants</h1>
+<!--Show list of tenants with link-->
+<ul>
+  <% @tenants.each do |tenant| %>
+    <li>
+      <%= link_to tenant.first_name, tenant %> <%= link_to tenant.last_name, tenant %> 
+    </li>
+  <% end %>
+</ul>
