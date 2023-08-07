@@ -1,3 +1,15 @@
 <h1>Tenant</h1>
 
-<p><%= @tenant.first_name %> <%= @tenant.last_name %></p>
+<p>Name: <%= @tenant.first_name %></p>
+<p>Surname: <%= @tenant.last_name %></p>
+<p>Aparment: <%= @tenant.apartment %></p>
+<p>Phone: <%= @tenant.phone %></p>
+<p>Email: <%= @tenant.email %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_tenant_path(@tenant) %></li>
+  <li><%= link_to "Destroy", tenant_path(@tenant), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
