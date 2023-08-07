@@ -1,6 +1,10 @@
 <h1>Tenant</h1>
 
-<p><%= @tenant.first_name %> <%= @tenant.last_name %></p>
+<p>Name: <%= @tenant.first_name %></p>
+<p>Surname: <%= @tenant.last_name %></p>
+<p>Aparment: <%= @tenant.apartment %></p>
+<p>Phone: <%= @tenant.phone %></p>
+<p>Email: <%= @tenant.email %></p>
 
 <ul>
   <li><%= link_to "Edit", edit_tenant_path(@tenant) %></li>
@@ -9,3 +13,32 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+
+<h2>Tickets</h2>
+<% @tenant.tickets.each do |ticket| %>
+  <p>
+    <strong>Title:</strong>
+    <%= ticket.title %>
+  </p>
+
+  <p>
+    <strong>Ticket:</strong>
+    <%= ticket.body %>
+  </p>
+<% end %>
+
+
+<h2>Maintenance Tickets:</h2>
+<%= form_with model: [ @tenant, @tenant.tickets.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
